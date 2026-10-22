@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anka Cafe | Turkish Food and Cafe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --maroon: #800020;
+            --maroon-gelap: #6a001a;
+            --merah: #a51d34;
+            --biru: #b6d3e6;
+            --biru-muda: #e8f1f7;
+            --putih: #ffffff;
+            --teks: #1f2933;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px;
+        }
+
+        body {
+            font-family: "Plus Jakarta Sans", Arial, sans-serif;
+            color: var(--teks);
+            line-height: 1.6;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            background-color: #d9c9b6;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+/* ===== TOMBOL ===== */
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-utama {
+            background-color: var(--maroon);
+            color: var(--putih);
+        }
+
+        .btn-utama:hover {
+            background-color: var(--maroon-gelap);
+        }
+
+        .btn-outline {
+            background-color: var(--putih);
+            color: var(--maroon);
+            border-color: var(--maroon);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--maroon);
+            color: var(--putih);
+        }
+
+        .btn-terang {
+            background-color: var(--biru-muda);
+            color: var(--maroon);
+        }
+
+        .btn-kecil {
+            padding: 7px 18px;
+            font-size: 12px;
+        }
+
+        .label-kecil {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--maroon);
+        }
+
+        .judul-section {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--maroon);
+        }
+
+        .sub-section {
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+/* ===== HEADER ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--maroon);
+            color: var(--putih);
+        }
+
+        .header-isi {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 62px;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: space-between;
+            margin-left: 40px;
+        }
+
+        .menu-nav {
+            display: flex;
+            gap: 24px;
+            margin: 0 auto;
+            padding-left: 60px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .menu-nav a:hover {
+            text-decoration: underline;
+        }
+
+/* tombol hamburger, disembunyikan dulu di desktop */
+        #cek-menu {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: var(--putih);
+        }
+
+/* ===== HERO ===== */
+        .hero {
+            background-color: var(--biru);
+            padding: 50px 0;
+        }
+
+        .hero-isi {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-teks h1 {
+            margin: 10px 0 14px;
+            font-size: 35px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--maroon);
+        }
+
+        .hero-teks p {
+            max-width: 420px;
+            font-size: 14px;
+        }
+
+        .hero-tombol {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 60px;
+        }
+
+        .hero-gambar img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+/* ===== PROMO ===== */
+        .promo {
+            background-color: var(--merah);
+            padding: 50px 0 60px;
+            color: var(--putih);
+        }
+
+        .promo .judul-section {
+            color: var(--putih);
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .kartu-promo {
+            overflow: hidden;
+            background-color: var(--putih);
+            color: var(--teks);
+            border-radius: 14px;
+        }
+
+        .kartu-promo img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+
+        .promo-isi {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 16px 20px;
+        }
+
+        .promo-isi h3 {
+            margin-bottom: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--maroon);
+        }
+
+        .promo-isi p {
+            font-size: 12px;
+        }
+
+        .promo-isi .btn {
+            flex-shrink: 0;
+        }
+
+/* ===== MENU ===== */
+        .menu {
+            background-color: var(--biru-muda);
+            padding: 50px 0 60px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .kartu-menu {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: var(--biru);
+            border-radius: 14px;
+        }
+
+        .kartu-menu img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .menu-isi {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 16px;
+        }
+
+        .menu-isi h3 {
+            margin-bottom: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--maroon);
+        }
+
+        .menu-isi p {
+            font-size: 12px;
+        }
+
+        .menu-bawah {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 24px;
+        }
+
+        .harga {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--maroon);
+        }
+
+/* ===== TENTANG KAMI ===== */
+        .tentang {
+            background-color: var(--biru);
+            padding: 50px 0;
+        }
+
+        .tentang-isi {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .tentang-gambar img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        .tentang-teks {
+            max-width: 480px;
+        }
+
+        .tentang-teks h2 {
+            margin: 6px 0 10px;
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--maroon);
+        }
+
+        .tentang-teks p {
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .tentang-teks .label-kecil {
+            margin-bottom: 0;
+            font-size: 11px;
+        }
+
+/* ===== ARTIKEL ===== */
+        .artikel {
+            background-color: var(--biru-muda);
+            padding: 50px 0 60px;
+        }
+
+        .artikel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .kartu-artikel {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: var(--biru);
+            border-radius: 12px;
+        }
+
+        .kartu-artikel img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        .artikel-isi {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 12px 16px 18px;
+        }
+
+        .artikel-isi time {
+            font-size: 11px;
+        }
+
+        .artikel-isi h3 {
+            margin: 4px 0 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--maroon);
+        }
+
+        .artikel-isi p {
+            margin-bottom: 14px;
+            font-size: 11px;
+        }
+
+        .artikel-isi .btn {
+            margin-top: auto;
+        }
+
+/* ===== FOOTER ===== */
+        footer {
+            padding: 36px 0 18px;
+            background-color: var(--maroon);
+            color: var(--putih);
+        }
+
+        .footer-brand p {
+            margin-top: 6px;
+            font-size: 13px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr;
+            gap: 30px;
+            margin-top: 28px;
+        }
+
+        footer h4 {
+            margin-bottom: 12px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .footer-kolom li {
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .footer-kolom a:hover {
+            text-decoration: underline;
+        }
+
+        .daftar-kontak li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .daftar-kontak svg {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            fill: none;
+            stroke: var(--putih);
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .copyright {
+            margin-top: 24px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+/* ===== RESPONSIF TABLET (maks 992px) ===== */
+        @media (max-width: 992px) {
+            .menu-grid,
+            .promo-grid,
+            .artikel-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .menu-nav {
+                gap: 16px;
+                padding-left: 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .kolom-kontak {
+                grid-column: 1 / -1;
+            }
+        }
+
+/* ===== RESPONSIF TABLET KECIL (maks 768px) ===== */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 16px;
+                margin: 0;
+                padding: 16px 24px 24px;
+                background-color: var(--maroon);
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+/* kalau checkbox dicentang, menu muncul */
+            #cek-menu:checked ~ nav {
+                display: flex;
+            }
+
+            .menu-nav {
+                flex-direction: column;
+                gap: 14px;
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+            }
+
+            nav .btn {
+                align-self: flex-start;
+            }
+
+            .hero {
+                padding: 36px 0;
+            }
+
+            .hero-isi,
+            .tentang-isi {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-teks h1 {
+                font-size: 30px;
+            }
+
+            .hero-teks p {
+                max-width: none;
+            }
+
+            .hero-tombol {
+                margin-top: 28px;
+            }
+
+            .tentang-teks {
+                max-width: none;
+            }
+
+            .judul-section {
+                font-size: 24px;
+            }
+        }
+
+/* ===== RESPONSIF HP (maks 480px) ===== */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .menu-grid,
+            .promo-grid,
+            .artikel-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kolom-kontak {
+                grid-column: auto;
+            }
+
+            .promo-isi {
+                flex-direction: column;
+            }
+
+            .hero-teks h1 {
+                font-size: 26px;
+            }
+
+            .hero-tombol .btn {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-isi">
+            <a href="#beranda" class="logo">ANKA CAFE</a>
+
+            <input type="checkbox" id="cek-menu">
+            <label for="cek-menu" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav>
+                <ul class="menu-nav">
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#promo">Promo</a></li>
+                    <li><a href="#tentang">Tentang Kami</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+                <a href="#menu" class="btn btn-terang">Pesan Sekarang</a>
+            </nav>
+        </div>
+    </header>
+
+<!-- ===== HERO ===== -->
+    <section class="hero" id="beranda">
+        <div class="container hero-isi">
+            <div class="hero-teks">
+                <p class="label-kecil">Turkish Food and Cafe</p>
+                <h1>Nikmati Cita Rasa Khas Turki</h1>
+                <p>Kebab panggang, baklava renyah, dan Turkish Tea untuk menemani waktu bersantai kamu.</p>
+                <div class="hero-tombol">
+                    <a href="#menu" class="btn btn-utama">Pesan Sekarang</a>
+                    <a href="#menu" class="btn btn-outline">Lihat Menu</a>
+                </div>
+            </div>
+            <div class="hero-gambar">
+                <img src="Foto Hero Anka Cafe.jpg" alt="Kebab panggang, baklava, dan Turkish Tea">
+            </div>
+        </div>
+    </section>
+
+<!-- ===== PROMO ===== -->
+    <section class="promo" id="promo">
+        <div class="container">
+            <h2 class="judul-section">Promo Spesial Hari Ini</h2>
+            <p class="sub-section">Temukan penawaran menarik untuk menemani waktu bersantai kamu.</p>
+
+            <div class="promo-grid">
+                <div class="kartu-promo">
+                    <img src="Baklava Pistachio.jpg" alt="Baklava">
+                    <div class="promo-isi">
+                        <div>
+                            <h3>Baklava Favorit</h3>
+                            <p>Coba pastry manis dengan isian pistachio.</p>
+                        </div>
+                        <a href="#" class="btn btn-utama btn-kecil">Lihat Promo</a>
+                    </div>
+                </div>
+
+                <div class="kartu-promo">
+                    <img src="Turkish Tea Special.png" alt="Turkish Tea">
+                    <div class="promo-isi">
+                        <div>
+                            <h3>Turkish Tea Special</h3>
+                            <p>Nikmati teh khas Turki dengan sajian pilihan.</p>
+                        </div>
+                        <a href="#" class="btn btn-utama btn-kecil">Lihat Promo</a>
+                    </div>
+                </div>
+
+                <div class="kartu-promo">
+                    <img src="Paket Hemat.jpg" alt="Paket Hemat">
+                    <div class="promo-isi">
+                        <div>
+                            <h3>Paket Hemat</h3>
+                            <p>Pilih kombinasi makanan dan minuman favorit.</p>
+                        </div>
+                        <a href="#" class="btn btn-utama btn-kecil">Lihat Promo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ===== MENU ANDALAN ===== -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2 class="judul-section">Menu Andalan Kami</h2>
+            <p class="sub-section">Pilihan sajian yang cocok untuk menemani waktu santai.</p>
+
+            <div class="menu-grid">
+                <div class="kartu-menu">
+                    <img src="Baklava Pistachio.jpg" alt="Baklava Pistachio">
+                    <div class="menu-isi">
+                        <h3>Baklava Pistachio</h3>
+                        <p>Pastry berlapis dengan isian pistachio.</p>
+                        <div class="menu-bawah">
+                            <span class="harga">Rp 45.000</span>
+                            <a href="#" class="btn btn-utama btn-kecil">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kartu-menu">
+                    <img src="Turkish Tea.jpg" alt="Turkish Tea">
+                    <div class="menu-isi">
+                        <h3>Turkish Tea</h3>
+                        <p>Teh khas Turki yang nikmat disajikan hangat.</p>
+                        <div class="menu-bawah">
+                            <span class="harga">Rp 25.000</span>
+                            <a href="#" class="btn btn-utama btn-kecil">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kartu-menu">
+                    <img src="Borek Keju Bayam.jpg" alt="Borek Keju Bayam">
+                    <div class="menu-isi">
+                        <h3>Borek Keju Bayam</h3>
+                        <p>Pastry gurih berisi keju dan bayam.</p>
+                        <div class="menu-bawah">
+                            <span class="harga">Rp 35.000</span>
+                            <a href="#" class="btn btn-utama btn-kecil">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kartu-menu">
+                    <img src="Kebab Ayam.jpg" alt="Kebab Ayam Doner">
+                    <div class="menu-isi">
+                        <h3>Kebab Ayam (Döner)</h3>
+                        <p>Kebab ayam dengan sayuran dan saus pilihan.</p>
+                        <div class="menu-bawah">
+                            <span class="harga">Rp 60.000</span>
+                            <a href="#" class="btn btn-utama btn-kecil">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ===== TENTANG KAMI ===== -->
+    <section class="tentang" id="tentang">
+        <div class="container tentang-isi">
+            <div class="tentang-gambar">
+                <img src="Anka Cafe.jpg" alt="Suasana Anka Cafe">
+            </div>
+            <div class="tentang-teks">
+                <p class="label-kecil">Tentang Kami</p>
+                <h2>Kisah di Balik ANKA CAFE</h2>
+                <p>Anka Cafe menghadirkan pengalaman kuliner yang mengutamakan cita rasa, kualitas sajian, dan kenyamanan pengunjung. Melalui pilihan makanan dan minuman, Anka Cafe menjadi tempat yang tepat untuk menikmati waktu bersama keluarga maupun teman.</p>
+                <a href="#" class="btn btn-utama">Selengkapnya</a>
+            </div>
+        </div>
+    </section>
+
+<!-- ===== ARTIKEL TERBARU ===== -->
+    <section class="artikel" id="artikel">
+        <div class="container">
+            <h2 class="judul-section">Artikel Terbaru</h2>
+
+            <div class="artikel-grid">
+                <div class="kartu-artikel">
+                    <img src="Artikel 1.jpg" alt="Hidangan mezze">
+                    <div class="artikel-isi">
+                        <time>12 Juni 2025</time>
+                        <h3>MENGENAL SAJIAN FAVORIT ANKA CAFE</h3>
+                        <p>Jelajahi kelezatan hidangan pembuka (mezze), sarapan lengkap (kahvaltı), dan makanan penutup otentik kami yang disukai oleh pelanggan setia.</p>
+                        <a href="#" class="btn btn-outline btn-kecil">Selengkapnya</a>
+                    </div>
+                </div>
+
+                <div class="kartu-artikel">
+                    <img src="Artikel 2.jpg" alt="Membaca buku di kafe">
+                    <div class="artikel-isi">
+                        <time>21 Juli 2026</time>
+                        <h3>TIPS MENIKMATI WAKTU SANTAI DI KAFE</h3>
+                        <p>Ciptakan momen relaksasi yang sempurna dengan panduan kami tentang cara memaksimalkan waktu Anda, dari pemilihan tempat duduk hingga ritual minum kopi.</p>
+                        <a href="#" class="btn btn-outline btn-kecil">Selengkapnya</a>
+                    </div>
+                </div>
+
+                <div class="kartu-artikel">
+                    <img src="Artikel 3.jpg" alt="Hidangan tradisional Turki">
+                    <div class="artikel-isi">
+                        <time>21 Oktober 2026</time>
+                        <h3>MENGENAL TRADISI KULINER TURKI</h3>
+                        <p>Pelajari sejarah dan kekayaan budaya di balik setiap hidangan, mulai dari teknik memasak kuno hingga penggunaan rempah rempah yang khas dan berwarna.</p>
+                        <a href="#" class="btn btn-outline btn-kecil">Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ===== FOOTER ===== -->
+    <footer id="kontak">
+        <div class="container">
+            <div class="footer-brand">
+                <a href="#beranda" class="logo">ANKA CAFE</a>
+                <p>Nikmati sajian pilihan dan suasana nyaman bersama kami.</p>
+            </div>
+
+            <div class="footer-grid">
+                <div class="footer-kolom">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#promo">Promo</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-kolom">
+                    <h4>Informasi</h4>
+                    <ul>
+                        <li><a href="#tentang">Tentang Kami</a></li>
+                        <li><a href="#artikel">Artikel</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-kolom kolom-kontak">
+                    <h4>Kontak</h4>
+                    <ul class="daftar-kontak">
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                            <span>Jl. Kemang Raya No. 45B, Bangka, Kecamatan Mampang Prapatan, Jakarta Selatan, DKI Jakarta 12730</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                            <span>Setiap hari, 08.00 - 24.00 WIB</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+                            <a href="tel:+62217198765">(021) 719-8765</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="copyright">&copy; 2026 Anka Cafe. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
